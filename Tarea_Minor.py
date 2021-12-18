@@ -5,7 +5,7 @@ import numpy as np
 from math import e
 
 
-#funcion 1
+## funcion 1
 def y(k):
     Y=e**(k/10)+e**((k-1)/10)
     return Y
@@ -21,7 +21,11 @@ def funcion(w,n,a):
   for i in range(0,n):
       f11=f11+(n-i+1)*w[i]
   f[11]=f11-1
-  return f
+  F=0
+  for i in range(0,2*n):
+      F=F+f[i]^2
+  return F
+
 
 w=np.zeros(12)
 a=10**(-5)
