@@ -23,7 +23,7 @@ def funcion(w,n,a):
   f[11]=f11-1
   F=0
   for i in range(0,2*n):
-      F=F+f[i]^2
+      F=F+f[i]**2
   return F
 
 
@@ -31,8 +31,8 @@ w=np.zeros(12)
 a=10**(-5)
 n=6
 
-print('ramapaz')
-funcion(w,n,a)
 
-print ("rama2");
+F=funcion(w,n,a)
+print(F)
+
 
