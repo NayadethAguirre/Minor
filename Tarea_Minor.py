@@ -1,3 +1,4 @@
+
 #Librerias
 import numpy as np
 #para usar euler
@@ -28,3 +29,6 @@ n=6
 
 
 funcion(w,n,a)
+
+print ("rama2");
+
