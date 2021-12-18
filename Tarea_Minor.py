@@ -27,7 +27,7 @@ w=np.zeros(12)
 a=10**(-5)
 n=6
 
-
+print('ramapaz')
 funcion(w,n,a)
 
 print ("rama2");
