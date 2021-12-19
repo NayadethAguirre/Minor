@@ -1,4 +1,3 @@
-
 #Librerias
 import numpy as np
 #para usar euler
@@ -9,7 +8,9 @@ from math import e
 def y(k):
     Y=e**(k/10)+e**((k-1)/10)
     return Y
- 
+ # w vector de entrada w0 a w5
+ # n = 6 cant de variables
+ # a  parametro
 def funcion(w,n,a):
   f=np.zeros(2*n)
   f[0]=w[0]-0.2
@@ -25,7 +26,7 @@ def funcion(w,n,a):
   for i in range(0,2*n):
       F=F+f[i]**2
   return F,f11
-
+##f11 , F es la funcion escalar dentro del vector
 
 w=np.zeros(6)
 a=10**(-5)
@@ -45,5 +46,32 @@ def gradiente(w,n,a,f11):
 g=gradiente(w,n,a,f11)
 print(g)
 
+
 funcion(w,n,a)
+
+
+
+imax=10000
+alpha=0.01
+tol=0.0001
+
+def gradientedescendant(w,imax,tol,alpha):
+    gd=np.zeros(6)
+    i=0; 
+    error=np.linalg.norm(gradiente(w,n,a,f11))
+    if(error<tol):
+        print("El valor ingresado es el minimo")
+        return w
+    else: 
+      while (i<imax) and (error>tol):        
+            w = w - alpha*gradiente(w,n,a,f11)
+            i = i+1
+            error=np.linalg.norm(gradiente(w,n,a,f11))
+      print(i) #agregar mensajes al usuario
+      print(error)
+
+      return w 
+   
+gd=gradientedescendant(w,imax,tol,alpha)
+print(gd)
 
