@@ -44,3 +44,6 @@ def gradiente(w,n,a,f11):
 
 g=gradiente(w,n,a,f11)
 print(g)
+
+funcion(w,n,a)
+
