@@ -42,7 +42,7 @@ def gradiente(w,n,a,f11):
         g[k]=a/5*e**(w[k]/10)*(e**(w[k]/10)+e**(w[k-1]/10)-y(k))+a/5*e**(w[k]/10)*(e**(w[k+1]/10)+e**(w[k]/10)-y(k+1))+a/5*e**((w[k]-1)/10)*(e**((w[k]+1)/10)-1)+2*f11*2*(n-k)*w[k]
     g[5]=a/5*e**(w[5]/10)*(e**(w[5]/10)+e**(w[4]/10)-y(5))+a/5*e**((w[5]-1)/10)*(e**((w[5]+1)/10)-1)+2*f11*2*(n-5)*w[5]
     return g
-
+print("Gradiente")
 g=gradiente(w,n,a,f11)
 print(g)
 
@@ -53,8 +53,8 @@ funcion(w,n,a)
 
 imax=10000
 alpha=0.01
-tol=0.0001
-
+tol=0.1
+print("")
 def gradientedescendant(w,imax,tol,alpha):
     gd=np.zeros(6)
     i=0; 
@@ -67,11 +67,12 @@ def gradientedescendant(w,imax,tol,alpha):
             w = w - alpha*gradiente(w,n,a,f11)
             i = i+1
             error=np.linalg.norm(gradiente(w,n,a,f11))
-      print(i) #agregar mensajes al usuario
-      print(error)
+      print("En la iteracion ",i+1, "se logra la tolerancia del 0.1 aproximadamente" )
+      print("el error es :",error)
 
       return w 
    
+print("Gradiente Descendiente")
 gd=gradientedescendant(w,imax,tol,alpha)
+print("") 
 print(gd)
-
