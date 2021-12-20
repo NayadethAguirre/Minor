@@ -2,6 +2,8 @@
 import numpy as np
 from math import e
 
+
+#pregunta 1
 #Funciones
 def f2(w,k):
     t = k/5
@@ -27,8 +29,8 @@ def gradf2(w,k):
     t = k/5
     f_1 = 4*f2(w,k)*(w[0]+t*w[1]-e**t)
     f_2 = 4*t*f2(w,k)*(w[0]+t*w[1]-e**t)
-    f_3 = -2*f2(w,k)*(w[2]+w[4]*np.sin(t)-np.cos(t))
-    f_4 = -4*np.sin(t)*f2(w,k)*(w[2]+w[4]*np.sin(t)-np.cos(t))
+    f_3 = -2*f2(w,k)*(w[2]+w[3]*np.sin(t)-np.cos(t))
+    f_4 = -4*np.sin(t)*f2(w,k)*(w[2]+w[3]*np.sin(t)-np.cos(t))
     return [f_1,f_2,f_3,f_4]
 
 def GD(w,m,imax,tol,lr):
@@ -50,8 +52,16 @@ def SGD(w,m,imax,lr):
     i = 0
     while i < imax:
         i = i+1
-        k = np.random.randint(1,m)
+        k = np.random.randint(0,m-1)
+        gradf2(w, k)
         w = w - lr*gradf2(w,k)
     print("Punto Final",w)
     print("Iteración",i)
     return w
+
+#pregunta 2
+w=np.zeros(4)
+m=900
+imax=100
+lr=0.01
+SGD(w,m,imax,lr)
