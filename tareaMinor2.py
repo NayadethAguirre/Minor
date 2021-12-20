@@ -51,7 +51,7 @@ def GD(w,m,imax,tol,lr):
     
 def SGD(w,m,imax,tol,lr):
     i = 0
-    err=100000
+    err=np.inf
     while i < imax and  tol < err :
         
         k = np.random.randint(0,m-1)
