@@ -46,16 +46,12 @@ def GD(w,m,imax,tol,lr):
         print("Error",err)
         return w
     
-def SGD(w,m,imax,tol,lr):
+def SGD(w,m,imax,lr):
     i = 0
-    while i < imax and tol < err:
+    while i < imax:
         i = i+1
-        n1 = np.linalg.norm(gradf2(w,m))
         k = np.random.randint(1,m)
         w = w - lr*gradf2(w,k)
-        n2 = np.linalg.norm(gradf2(w,m))
-        err = np.abs(n1-n2)
     print("Punto Final",w)
     print("Iteración",i)
-    print("Error",err)
     return w
