@@ -30,7 +30,7 @@ def gradf2(w,k):
     t = 5/(k+1)
     f_1 = 4*f2(w,k)*(w[0]+t*w[1]-e**t)
     f_2 = 4*t*f2(w,k)*(w[0]+t*w[1]-e**t)
-    f_3 = -2*f2(w,k)*(w[2]+w[3]*np.sin(t)-np.cos(t))
+    f_3 = -4*f2(w,k)*(w[2]+w[3]*np.sin(t)-np.cos(t))
     f_4 = -4*np.sin(t)*f2(w,k)*(w[2]+w[3]*np.sin(t)-np.cos(t))
     return np.array([f_1,f_2,f_3,f_4])
 
