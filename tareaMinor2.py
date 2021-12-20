@@ -46,7 +46,7 @@ def GD(w,m,imax,tol,lr):
         print("Error",err)
         return w
     
-    def SGD(w,m,imax,tol,lr):
+def SGD(w,m,imax,tol,lr):
     i = 0
     while i < imax and tol < err:
         i = i+1
