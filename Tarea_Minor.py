@@ -71,7 +71,7 @@ def gradientedescendant(w,imax,tol,alpha):
       print("el error es :",error)
 
       return w 
-   
+print(w, "<- Punto")  
 print("Gradiente Descendiente")
 gd=gradientedescendant(w,imax,tol,alpha)
 print("") 
