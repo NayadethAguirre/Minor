@@ -8,6 +8,7 @@ from math import e
 def y(k):
     Y=e**(k/10)+e**((k-1)/10)
     return Y
+
  # w vector de entrada w0 a w5
  # n = 6 cant de variables
  # a  parametro
@@ -26,11 +27,13 @@ def funcion(w,n,a):
   for i in range(0,2*n):
       F=F+f[i]**2
   return F,f11
-##f11 , F es la funcion escalar dentro del vector
+##f11 , es el valor f_11 de la función
 
-w=np.zeros(6)
-a=10**(-5)
-n=6
+
+#parámetros
+w=np.zeros(6) #vector de entrada
+a=10**(-5)    #valor dado
+n=6           #cantidad de variables
 
 [F,f11]=funcion(w,n,a)
 
@@ -42,37 +45,69 @@ def gradiente(w,n,a,f11):
         g[k]=a/5*e**(w[k]/10)*(e**(w[k]/10)+e**(w[k-1]/10)-y(k))+a/5*e**(w[k]/10)*(e**(w[k+1]/10)+e**(w[k]/10)-y(k+1))+a/5*e**((w[k]-1)/10)*(e**((w[k]+1)/10)-1)+2*f11*2*(n-k)*w[k]
     g[5]=a/5*e**(w[5]/10)*(e**(w[5]/10)+e**(w[4]/10)-y(5))+a/5*e**((w[5]-1)/10)*(e**((w[5]+1)/10)-1)+2*f11*2*(n-5)*w[5]
     return g
-print("Gradiente")
-g=gradiente(w,n,a,f11)
-print(g)
-
-
-funcion(w,n,a)
 
 
 
 imax=10000
 alpha=0.01
 tol=0.1
-print("")
-def gradientedescendant(w,imax,tol,alpha):
-    gd=np.zeros(6)
+
+
+#pregunta 1: implementar descenso del gradiente 
+def gradientdescendant(w,imax,tol,alpha,n,a,f11):
     i=0; 
     error=np.linalg.norm(gradiente(w,n,a,f11))
     if(error<tol):
         print("El valor ingresado es el minimo")
         return w
     else: 
-      while (i<imax) and (error>tol):        
+        while (i<imax) and (error>tol):        
             w = w - alpha*gradiente(w,n,a,f11)
             i = i+1
             error=np.linalg.norm(gradiente(w,n,a,f11))
-      print("En la iteracion ",i+1, "se logra la tolerancia del 0.1 aproximadamente" )
-      print("el error es :",error)
+        print('El punto final es', w)
+        print('En la iteración: ', i)
+        print('con error: ', error)
+        return w 
 
-      return w 
-print(w, "<- Punto")  
-print("Gradiente Descendiente")
-gd=gradientedescendant(w,imax,tol,alpha)
-print("") 
-print(gd)
+#pregunta 2
+print("Pregunta 2")
+imax=10000
+alpha=0.01
+tol=0.00001
+
+gd=gradientdescendant(w,imax,tol,alpha,n,a,f11)
+
+#pregunta 3
+print("Pregunta 3")
+
+#punto 1
+
+w=np.zeros(6)
+print("Punto 1",w)
+gd=gradientdescendant(w,imax,tol,alpha,n,a,f11)
+print("Mejora 0.1")
+gd=gradientdescendant(w,imax,0.1,alpha,n,a,f11)
+
+#punto 2
+w=np.ones(6)
+print("Punto 2",w)
+gd=gradientdescendant(w,imax,tol,alpha,n,a,f11)
+print("Mejora 0.1")
+gd=gradientdescendant(w,imax,0.1,alpha,n,a,f11)
+
+#punto 3
+w=np.array([10,100,300,7,-200,0.00002])
+print("Punto 3",w)
+gd=gradientdescendant(w,imax,tol,alpha,n,a,f11)
+print("Mejora 0.1")
+gd=gradientdescendant(w,imax,0.1,alpha,n,a,f11)
+
+
+#punto 4
+w=np.array([-2,-0.1,3,2,-2,0])
+print("Punto 4",w)
+gd=gradientdescendant(w,imax,tol,alpha,n,a,f11)
+print("Mejora 0.1")
+gd=gradientdescendant(w,imax,0.1,alpha,n,a,f11)
+
