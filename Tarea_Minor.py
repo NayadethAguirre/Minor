@@ -4,6 +4,7 @@ import numpy as np
 from math import e
 
 
+
 ## funcion 1
 def y(k):
     Y=e**(k/10)+e**((k-1)/10)
