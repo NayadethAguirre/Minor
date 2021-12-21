@@ -26,6 +26,7 @@ def gradF2(w,m): #con fi cuadrado
     F_4 = sum(4*np.sin(5/(k+1))*f2(w,k)*(w[2]+w[3]*np.sin(5/(k+1))-np.cos(5/(k+1))) for k in range(1,m+1))
     return np.array([F_1,F_2,F_3,F_4])
 
+
 def gradf2(w,k): #con fi cuadrado
     t = 5/(k+1)
     f_1 = 4*f2(w,k)*(w[0]+t*w[1]-e**t)
