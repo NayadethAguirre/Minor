@@ -4,7 +4,7 @@ import numpy as np
 from math import e
 
 
-## funcion 1
+# funcion 1
 def y(k):
     Y=e**(k/10)+e**((k-1)/10)
     return Y
@@ -27,7 +27,7 @@ def funcion(w,n,a):
   for i in range(0,2*n):
       F=F+f[i]**2
   return F,f11
-##f11 , es el valor f_11 de la función
+#f11 , es el valor f_11 de la función
 
 
 #parámetros
