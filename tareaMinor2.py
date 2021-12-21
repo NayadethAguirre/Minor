@@ -78,13 +78,20 @@ def SGD(w,m,imax,tol,lr,f): #parametro f para especificar el gradiente usado
     print("Error",err)
     return w
 
+#algoritmo SGD
 #pregunta 2
-w=np.array([0,0,0,0])
-#gradf2(w,1000)
-m=10000
-imax=1000
-lr=0.000001
-tol=0.01
-SGD(w,m,imax,tol,lr)
-#gradf2(w,m)
-#np.linalg.norm(gradF2(w,m))
+w = np.array([0,0,0,0])
+m = 500
+imax = 10000
+lr = 0.00001
+tol = 0.0001
+SGD(w,m,imax,tol,lr,f = gradf22)
+
+#algoritmo GD sin cuadrados
+#pregunta 2
+w = np.array([0,0,0,0])
+m = 500
+imax = 10000
+lr = 0.00001
+tol = 0.0001
+GD(w,m,imax,lr,tol, f = gradF22)
