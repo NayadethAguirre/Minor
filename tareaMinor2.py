@@ -49,31 +49,29 @@ def gradf22(w,k): #sin fi cuadrado
     f_4 = 2*np.sin(t)*(w[2]+w[3]*np.sin(t)-np.cos(t))
     return np.array([f_1,f_2,f_3,f_4])
 
-def GD(w,m,imax,tol,lr):
+def GD(w,m,imax,tol,lr,f): #parametro f para especificar el gradiente usado
     i = 0
-    err = np.linalg.norm(gradF2(w,m))
+    err = np.linalg.norm(f(w,m))
     if err < tol:
         print("El punto ya es mínimo")
     else:
         while i < imax and tol < err:
             i = i+1
-            w = w - lr*gradF2(w,m)
-            err = np.linalg.norm(gradF2(w,m))
+            w = w - lr*f(w,m)
+            err = np.linalg.norm(f(w,m))
         print("Punto Final",w)
         print("Iteración",i)
         print("Error",err)
         return w
-    
-def SGD(w,m,imax,tol,lr):
+
+def SGD(w,m,imax,tol,lr,f): #parametro f para especificar el gradiente usado
     i = 0
     err=np.inf
     while i < imax and  tol < err :
         
         k = np.random.randint(0,m-1)
-        err = np.linalg.norm(gradf2(w,k))
-        #gradf2(w, k)
-        
-        w = w - lr*gradf2(w,k)
+        err = np.linalg.norm(f(w,k))
+        w = w - lr*f(w,k)
         i = i+1
     print("Punto Final",w)
     print("Iteración",i)
