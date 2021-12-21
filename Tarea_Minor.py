@@ -52,7 +52,6 @@ imax=10000
 alpha=0.01
 tol=0.1
 
-
 #pregunta 1: implementar descenso del gradiente 
 def gradientdescendant(w,imax,tol,alpha,n,a,f11):
     i=0; 
